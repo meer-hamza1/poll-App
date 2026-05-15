@@ -20,10 +20,21 @@ function AdminDashboard() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/admin/stats`);
+        const token = localStorage.getItem("token"); // 👈 get token
+        const res = await axios.get(
+          `${import.meta.env.VITE_API_URL}/api/admin/stats`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`, // 👈 send token
+            },
+          }
+        );
         setStats(res.data.stats);
       } catch (error) {
         console.log(error);
+        if (error.response?.status === 401) {
+          navigate("/login"); // 👈 redirect if not logged in
+        }
       } finally {
         setLoading(false);
       }
@@ -35,6 +46,14 @@ function AdminDashboard() {
     return (
       <div id="admin-page">
         <p id="admin-loading">Loading...</p>
+      </div>
+    );
+  }
+
+  if (!stats) {
+    return (
+      <div id="admin-page">
+        <p id="admin-loading">Failed to load stats. Please log in again.</p>
       </div>
     );
   }
