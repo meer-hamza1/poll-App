@@ -1,0 +1,330 @@
+#admin-page {
+  padding: 2rem;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(56, 189, 248, 0.1), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(139, 92, 246, 0.1), transparent 30%),
+    linear-gradient(135deg, #020617 0%, #050816 45%, #0f172a 100%);
+  position: relative;
+  overflow-x: hidden;
+}
+
+#admin-page::before {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: rgba(56, 189, 248, 0.08);
+  filter: blur(120px);
+  top: -120px;
+  left: -120px;
+  z-index: 0;
+}
+
+#admin-page::after {
+  content: "";
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  background: rgba(139, 92, 246, 0.08);
+  filter: blur(120px);
+  bottom: -140px;
+  right: -120px;
+  z-index: 0;
+}
+
+#admin-loading {
+  text-align: center;
+  color: #94a3b8;
+  margin-top: 3rem;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 2;
+}
+
+#admin-header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#admin-title {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+#admin-back-btn {
+  font-size: 14px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #0ea5e9, #8b5cf6);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 22px rgba(14, 165, 233, 0.2);
+}
+
+#admin-back-btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 16px 32px rgba(14, 165, 233, 0.28),
+    0 0 20px rgba(139, 92, 246, 0.16);
+}
+
+/* stat cards */
+
+#admin-stats-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 2.2rem;
+}
+
+.admin-stat-card {
+  background: rgba(17, 24, 39, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  backdrop-filter: blur(18px);
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: all 0.35s ease;
+}
+
+.admin-stat-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(56, 189, 248, 0.22);
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.45),
+    0 0 25px rgba(56, 189, 248, 0.12);
+}
+
+.admin-stat-icon {
+  font-size: 24px;
+  background: linear-gradient(
+    135deg,
+    rgba(14, 165, 233, 0.18),
+    rgba(139, 92, 246, 0.18)
+  );
+  border-radius: 16px;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.12);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.08);
+}
+
+.admin-stat-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.admin-stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #38bdf8;
+  margin: 0;
+  line-height: 1;
+}
+
+.admin-stat-label {
+  font-size: 11px;
+  color: #94a3b8;
+  margin: 4px 0 0;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+}
+
+.admin-stat-sub {
+  font-size: 13px;
+  color: #64748b;
+  margin: 4px 0 0;
+  line-height: 1.5;
+}
+
+/* sections */
+
+.admin-section {
+  position: relative;
+  z-index: 2;
+  background: rgba(17, 24, 39, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 1.6rem;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(20px);
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transition: all 0.35s ease;
+}
+
+.admin-section:hover {
+  border-color: rgba(56, 189, 248, 0.18);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.45),
+    0 0 25px rgba(56, 189, 248, 0.08);
+}
+
+.admin-section-title {
+  font-size: 12px;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin: 0 0 1.2rem;
+  font-weight: 700;
+}
+
+.admin-chart-wrapper {
+  margin-top: 0.8rem;
+}
+
+/* recent polls */
+
+#admin-recent-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.admin-recent-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: rgba(15, 23, 42, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  transition: all 0.25s ease;
+}
+
+.admin-recent-row:hover {
+  transform: translateY(-2px);
+  border-color: rgba(56, 189, 248, 0.18);
+  background: rgba(15, 23, 42, 0.95);
+}
+
+.admin-recent-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-recent-icon {
+  font-size: 18px;
+  color: #38bdf8;
+}
+
+.admin-recent-title {
+  font-size: 15px;
+  color: #f8fafc;
+  margin: 0;
+  font-weight: 600;
+}
+
+.admin-recent-meta {
+  font-size: 12px;
+  color: #64748b;
+  margin: 4px 0 0;
+}
+
+.admin-recent-date {
+  font-size: 12px;
+  color: #94a3b8;
+  margin: 0;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.admin-empty {
+  font-size: 14px;
+  color: #64748b;
+  text-align: center;
+  padding: 1.2rem 0;
+}
+
+/* tooltip */
+
+.admin-tooltip {
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(56, 189, 248, 0.18);
+  border-radius: 14px;
+  padding: 10px 14px;
+  font-size: 13px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+}
+
+.admin-tooltip-val {
+  color: #38bdf8;
+  margin: 0;
+  font-weight: 700;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  #admin-page {
+    padding: 1rem;
+  }
+
+  #admin-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  #admin-title {
+    font-size: 1.8rem;
+  }
+
+  #admin-back-btn {
+    width: 100%;
+  }
+
+  #admin-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-stat-card {
+    padding: 1.2rem;
+  }
+
+  .admin-section {
+    padding: 1.2rem;
+  }
+
+  .admin-recent-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .admin-recent-date {
+    align-self: flex-end;
+  }
+}
