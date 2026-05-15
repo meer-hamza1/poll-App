@@ -197,7 +197,7 @@ function Dashboard() {
   useEffect(() => {
     const fetchPolls = async () => {
       const response = await axios.get(
-        "http://localhost:8000/api/polls",
+        `${import.meta.env.VITE_API_URL}/api/polls`,
         authHeader(),
       );
       setPolls(response.data.polls);
@@ -213,7 +213,7 @@ function Dashboard() {
   const handleDeletePoll = async (pollId) => {
     try {
       await axios.delete(
-        `http://localhost:8000/api/polls/${pollId}`,
+        `${import.meta.env.VITE_API_URL}/api/polls/${pollId}`,
         authHeader(),
       );
       setPolls(polls.filter((poll) => poll._id !== pollId));
@@ -222,7 +222,7 @@ function Dashboard() {
     }
   };
 
-  // ✅ filter polls by search query
+  // filter polls by search query
   const filteredPolls = polls.filter((poll) =>
     poll.title.toLowerCase().includes(searchQuery.toLowerCase()),
   );

@@ -13,7 +13,7 @@ function Login() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/auth/login",
+        `${import.meta.env.VITE_API_URL}/api/auth/login`,
         { email, password }
       );
       localStorage.setItem("token", response.data.token);
@@ -28,7 +28,7 @@ function Login() {
   const handleGoogleSuccess = async (credentialResponse) => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/auth/google",
+        `${import.meta.env.VITE_API_URL}/api/auth/google`,
         { token: credentialResponse.credential }
       );
       localStorage.setItem("token", response.data.token);

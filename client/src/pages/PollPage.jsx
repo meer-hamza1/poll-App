@@ -21,7 +21,7 @@ function PollPage() {
     const fetchPoll = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/api/polls/${id}`
+          `${import.meta.env.VITE_API_URL}/api/polls/${id}`
         );
         setPoll(response.data.poll);
       } catch (error) {
@@ -84,7 +84,7 @@ function PollPage() {
       );
 
       await axios.post(
-        `http://localhost:8000/api/polls/${id}/response`,
+        `${import.meta.env.VITE_API_URL}/api/polls/${id}/response`,
         { answers: formattedAnswers }
       );
 

@@ -17,7 +17,7 @@ const authHeader = () => ({
   headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
 });
 
-const socket = io("http://localhost:8000");
+const socket = io(`${import.meta.env.VITE_API_URL}`);
 
 
 const CustomTooltip = ({ active, payload }) => {
@@ -42,7 +42,7 @@ function Analytics() {
   const fetchAnalytics = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/api/polls/${id}/analytics`,authHeader()
+        `${import.meta.env.VITE_API_URL}/api/polls/${id}/analytics`,authHeader()
       );
       setAnalytics(response.data.analytics);
     } catch (error) {

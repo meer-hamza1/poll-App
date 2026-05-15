@@ -20,7 +20,7 @@ function AdminDashboard() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const res = await axios.get("http://localhost:8000/api/admin/stats");
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/admin/stats`);
         setStats(res.data.stats);
       } catch (error) {
         console.log(error);

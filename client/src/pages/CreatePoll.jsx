@@ -24,7 +24,7 @@ function CreatePoll() {
     const fetchPoll = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/api/polls/${id}`,
+          `${import.meta.env.VITE_API_URL}/api/polls/${id}`,
         );
 
         setTitle(response.data.poll.title);
@@ -86,7 +86,7 @@ function CreatePoll() {
       if (id) {
         // edit mode
         await axios.put(
-          `http://localhost:8000/api/polls/${id}`,
+          `${import.meta.env.VITE_API_URL}/api/polls/${id}`,
           { title, questions: formattedQuestions },
           authHeader(),
         );
@@ -94,7 +94,7 @@ function CreatePoll() {
       } else {
         // create mode
         await axios.post(
-          "http://localhost:8000/api/polls",
+          `${import.meta.env.VITE_API_URL}/api/polls`,
           { title, questions: formattedQuestions, expiresAt: expiry },
           authHeader(),
         );
